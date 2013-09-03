@@ -3,6 +3,9 @@ TypeCMS
 
 Magento module which adds page types to the CMS.
 
+![backend](http://i.imgur.com/OC4X7Ip.png)
+![backend](http://i.imgur.com/qGhHK0C.png)
+
 Features
 ---
 TypeCMS was developed to allow for more flexibility with the Magento CMS. TypeCMS introduces page types which have their own custom backend fields and frontend templates.
