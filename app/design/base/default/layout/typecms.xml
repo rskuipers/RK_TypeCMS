@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<layout>
+
+    <cms_page>
+        <reference name="cms.wrapper">
+            <remove name="cms_page" />
+            <block type="typecms/page" name="cms_page" />
+        </reference>
+    </cms_page>
+
+</layout>
