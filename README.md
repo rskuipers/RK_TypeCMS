@@ -6,6 +6,8 @@ Magento module which adds page types to the CMS.
 ![backend](http://i.imgur.com/OC4X7Ip.png)
 ![backend](http://i.imgur.com/qGhHK0C.png)
 
+The above was achieved purely with xml.
+
 Features
 ---
 TypeCMS was developed to allow for more flexibility with the Magento CMS. TypeCMS introduces page types which have their own custom backend fields and frontend templates.
@@ -54,7 +56,9 @@ The above defines a page type (in this case the default page type) called Defaul
 
 **label** – Label of the attribute (required)
 
-**type** – The type of data, this also determines the field to be rendered. Options: varchar, int, text. Type text will render a WYSIWYG. (required)
+**type** – The type of data, this also determines the field to be rendered. Options: varchar, int, text. (required)
+
+*NOTE* When using the default model of TypeCMS, your varchar and integer attribute will turn into a text input and your text attribute will turn into a WYSIWYG.
 
 Changelog
 ---
