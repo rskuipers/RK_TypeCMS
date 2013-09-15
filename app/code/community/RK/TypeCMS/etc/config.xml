@@ -12,6 +12,24 @@
                     <label>Default</label>
                     <model>typecms/page_type_default</model>
                     <template>typecms/default.phtml</template>
+                    <attributes>
+                        <name>
+                            <label>Name</label>
+                            <type>text</type>
+                        </name>
+                        <age>
+                            <label>Age</label>
+                            <type>int</type>
+                        </age>
+                        <introduction>
+                            <label>Introduction</label>
+                            <type>editor</type>
+                        </introduction>
+                        <signature>
+                            <label>Signature</label>
+                            <type>textarea</type>
+                        </signature>
+                    </attributes>
                 </default>
             </types>
         </page>
@@ -106,4 +124,5 @@
             </updates>
         </layout>
     </frontend>
+
 </config>

@@ -3,15 +3,25 @@
 class RK_TypeCMS_Helper_Data extends Mage_Core_Helper_Abstract
 {
 
-    protected $_dbTypeToForm = array(
-        'varchar' => 'text',
-        'text' => 'editor',
+    protected $_attributeTypeToDbType = array(
+        'text' => 'varchar',
+        'textarea' => 'text',
+        'editor' => 'text',
+    );
+
+    public function attributeTypeToDbType($type)
+    {
+        return isset($this->_attributeTypeToDbType[$type]) ? $this->_attributeTypeToDbType[$type] : $type;
+    }
+
+    protected $_attributeTypeToFieldType = array(
+        'textarea' => 'textarea',
         'int' => 'text',
     );
 
-    public function dbTypeToForm($type)
+    public function attributeTypeToFieldType($type)
     {
-        return $this->_dbTypeToForm[$type];
+        return isset($this->_attributeTypeToFieldType[$type]) ? $this->_attributeTypeToFieldType[$type] : $type;
     }
 
     public function setupAttributes()
@@ -26,7 +36,7 @@ class RK_TypeCMS_Helper_Data extends Mage_Core_Helper_Abstract
                 $attributeEntity = $setup->getAttribute(RK_TypeCMS_Model_Page::ENTITY, $attributeCode);
                 if (!$attributeEntity) {
                     $setup->addAttribute(RK_TypeCMS_Model_Page::ENTITY, $attributeCode, array(
-                        'type' => $attribute['type'],
+                        'type' => $this->attributeTypeToDbType($attribute['type']),
                     ));
                 }
                 $attributes[] = $attributeCode;

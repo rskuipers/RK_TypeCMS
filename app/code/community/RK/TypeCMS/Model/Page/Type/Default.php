@@ -14,7 +14,7 @@ class RK_TypeCMS_Model_Page_Type_Default extends RK_TypeCMS_Model_Page_Type_Abst
         ));
 
         foreach ($attributes as $code => $attribute) {
-            $type = Mage::helper('typecms')->dbTypeToForm($attribute['type']);
+            $type = Mage::helper('typecms')->attributeTypeToFieldType($attribute['type']);
             $label = Mage::helper('typecms')->__($attribute['label']);
             if ($type == 'editor') {
                 $wysiwygConfig = Mage::getSingleton('cms/wysiwyg_config')->getConfig(
