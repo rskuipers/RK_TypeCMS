@@ -45,7 +45,7 @@ $table = $installer->getConnection()
         'nullable'  => false,
         'default'   => '0',
     ), 'Entity Id')
-    ->addColumn('value', Varien_Db_Ddl_Table::TYPE_TEXT, 255, array(
+    ->addColumn('value', Varien_Db_Ddl_Table::TYPE_VARCHAR, 255, array(
     ), 'Value')
     ->addIndex(
         $installer->getIdxName(
@@ -92,7 +92,7 @@ $table = $installer->getConnection()
         'nullable'  => false,
         'default'   => '0',
     ), 'Entity Id')
-    ->addColumn('value', Varien_Db_Ddl_Table::TYPE_TEXT, 255, array(
+    ->addColumn('value', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
     ), 'Value')
     ->addIndex(
         $installer->getIdxName(
@@ -140,7 +140,7 @@ $table = $installer->getConnection()
         'nullable'  => false,
         'default'   => '0',
     ), 'Entity Id')
-    ->addColumn('value', Varien_Db_Ddl_Table::TYPE_TEXT, 255, array(
+    ->addColumn('value', Varien_Db_Ddl_Table::TYPE_TEXT, null, array(
     ), 'Value')
     ->addIndex(
         $installer->getIdxName(
