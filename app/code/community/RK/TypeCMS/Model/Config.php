@@ -1,6 +1,6 @@
 <?php
 
-class RickDev_TypeCMS_Model_Config
+class RK_TypeCMS_Model_Config
 {
 
     const XML_PATH_PAGE_TYPES = 'global/page/types';

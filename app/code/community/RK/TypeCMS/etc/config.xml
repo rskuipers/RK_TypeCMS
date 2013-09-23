@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <config>
     <modules>
-        <RickDev_TypeCMS>
+        <RK_TypeCMS>
             <version>1.0.0</version>
-        </RickDev_TypeCMS>
+        </RK_TypeCMS>
     </modules>
     <global>
         <page>
@@ -35,16 +35,16 @@
         </page>
         <blocks>
             <typecms>
-                <class>RickDev_TypeCMS_Block</class>
+                <class>RK_TypeCMS_Block</class>
             </typecms>
         </blocks>
         <models>
             <typecms>
-                <class>RickDev_TypeCMS_Model</class>
+                <class>RK_TypeCMS_Model</class>
                 <resourceModel>typecms_resource</resourceModel>
             </typecms>
             <typecms_resource>
-                <class>RickDev_TypeCMS_Model_Resource</class>
+                <class>RK_TypeCMS_Model_Resource</class>
                 <entities>
                     <page>
                         <table>typecms_page_entity</table>
@@ -63,7 +63,7 @@
         </models>
         <helpers>
             <typecms>
-                <class>RickDev_TypeCMS_Helper</class>
+                <class>RK_TypeCMS_Helper</class>
             </typecms>
         </helpers>
         <events>
@@ -99,8 +99,8 @@
         <resources>
             <typecms_setup>
                 <setup>
-                    <module>RickDev_TypeCMS</module>
-                    <class>RickDev_TypeCMS_Model_Resource_Setup</class>
+                    <module>RK_TypeCMS</module>
+                    <class>RK_TypeCMS_Model_Resource_Setup</class>
                 </setup>
             </typecms_setup>
             <typecms_write>

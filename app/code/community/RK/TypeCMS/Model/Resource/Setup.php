@@ -1,11 +1,11 @@
 <?php
 
-class RickDev_TypeCMS_Model_Resource_Setup extends Mage_Eav_Model_Entity_Setup
+class RK_TypeCMS_Model_Resource_Setup extends Mage_Eav_Model_Entity_Setup
 {
 
     public function getDefaultEntities() {
         return array(
-            RickDev_TypeCMS_Model_Page::ENTITY => array(
+            RK_TypeCMS_Model_Page::ENTITY => array(
                 'entity_model' => 'typecms/page',
                 'table' => 'typecms/page',
                 'attributes' => array(

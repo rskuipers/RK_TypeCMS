@@ -1,6 +1,6 @@
 <?php
 
-class RickDev_TypeCMS_Model_Observer {
+class RK_TypeCMS_Model_Observer {
 
     public function adminhtmlCmsPageEditTabMainPrepareForm($observer)
     {

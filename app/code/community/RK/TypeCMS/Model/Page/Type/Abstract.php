@@ -1,6 +1,6 @@
 <?php
 
-abstract class RickDev_TypeCMS_Model_Page_Type_Abstract extends Varien_Object
+abstract class RK_TypeCMS_Model_Page_Type_Abstract extends Varien_Object
 {
 
     protected $_attributes;
