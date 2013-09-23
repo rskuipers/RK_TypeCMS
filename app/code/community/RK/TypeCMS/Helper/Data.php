@@ -6,6 +6,7 @@ class RK_TypeCMS_Helper_Data extends Mage_Core_Helper_Abstract
     protected $_attributeTypeToDbType = array(
         'text' => 'varchar',
         'select' => 'varchar',
+        'yesno' => 'int',
         'textarea' => 'text',
         'editor' => 'text',
     );
@@ -18,6 +19,7 @@ class RK_TypeCMS_Helper_Data extends Mage_Core_Helper_Abstract
     protected $_attributeTypeToFieldType = array(
         'textarea' => 'textarea',
         'int' => 'text',
+        'yesno' => 'select',
     );
 
     public function attributeTypeToFieldType($type)

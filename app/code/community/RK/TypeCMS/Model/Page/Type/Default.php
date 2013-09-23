@@ -22,6 +22,13 @@ class RK_TypeCMS_Model_Page_Type_Default extends RK_TypeCMS_Model_Page_Type_Abst
                 'label' => $label,
             ));
 
+            if ($attribute['type'] == 'yesno') {
+                $attribute['options'] = array(
+                    0 => 'No',
+                    1 => 'Yes',
+                );
+            }
+
             if ($type == 'editor') {
                 $wysiwygConfig = Mage::getSingleton('cms/wysiwyg_config')->getConfig(
                     array('tab_id' => 'main')

@@ -7,6 +7,9 @@ abstract class RK_TypeCMS_Model_Page_Type_Abstract extends Varien_Object
 
     abstract function init(Varien_Data_Form $form);
 
+    /**
+     * @return array
+     */
     protected function getAttributes()
     {
         if (!isset($this->_attributes)) {

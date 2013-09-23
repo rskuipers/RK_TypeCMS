@@ -23,6 +23,10 @@ class RK_TypeCMS_Model_Config
         return $types[$type];
     }
 
+    /**
+     * @param $pageType
+     * @return array
+     */
     public function getAttributes($pageType)
     {
         $node = Mage::getConfig()->getNode(self::XML_PATH_PAGE_TYPES)->descend($pageType);
