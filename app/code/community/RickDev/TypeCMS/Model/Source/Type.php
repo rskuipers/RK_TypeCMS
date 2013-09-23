@@ -1,6 +1,6 @@
 <?php
 
-class RK_TypeCMS_Model_Source_Type
+class RickDev_TypeCMS_Model_Source_Type
 {
 
     /**

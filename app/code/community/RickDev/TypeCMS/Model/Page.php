@@ -1,6 +1,6 @@
 <?php
 
-class RK_TypeCMS_Model_Page extends Mage_Core_Model_Abstract
+class RickDev_TypeCMS_Model_Page extends Mage_Core_Model_Abstract
 {
 
     const ENTITY = 'typecms_page';

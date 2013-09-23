@@ -1,6 +1,6 @@
 <?php
 
-class RK_TypeCMS_Model_Page_Type_Default extends RK_TypeCMS_Model_Page_Type_Abstract
+class RickDev_TypeCMS_Model_Page_Type_Default extends RickDev_TypeCMS_Model_Page_Type_Abstract
 {
 
     public function init(Varien_Data_Form $form)

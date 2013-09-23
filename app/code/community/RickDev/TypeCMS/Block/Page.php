@@ -1,6 +1,6 @@
 <?php
 
-class RK_TypeCMS_Block_Page extends Mage_Cms_Block_Page
+class RickDev_TypeCMS_Block_Page extends Mage_Cms_Block_Page
 {
 
     protected function _toHtml()

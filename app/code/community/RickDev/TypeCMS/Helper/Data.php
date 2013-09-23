@@ -1,6 +1,6 @@
 <?php
 
-class RK_TypeCMS_Helper_Data extends Mage_Core_Helper_Abstract
+class RickDev_TypeCMS_Helper_Data extends Mage_Core_Helper_Abstract
 {
 
     protected $_attributeTypeToDbType = array(
@@ -33,9 +33,9 @@ class RK_TypeCMS_Helper_Data extends Mage_Core_Helper_Abstract
         foreach ($pageTypes as $pageTypeCode => $pageType) {
             $attributes = $config->getAttributes($pageTypeCode);
             foreach ($attributes as $attributeCode => $attribute) {
-                $attributeEntity = $setup->getAttribute(RK_TypeCMS_Model_Page::ENTITY, $attributeCode);
+                $attributeEntity = $setup->getAttribute(RickDev_TypeCMS_Model_Page::ENTITY, $attributeCode);
                 if (!$attributeEntity) {
-                    $setup->addAttribute(RK_TypeCMS_Model_Page::ENTITY, $attributeCode, array(
+                    $setup->addAttribute(RickDev_TypeCMS_Model_Page::ENTITY, $attributeCode, array(
                         'type' => $this->attributeTypeToDbType($attribute['type']),
                     ));
                 }
@@ -45,7 +45,7 @@ class RK_TypeCMS_Helper_Data extends Mage_Core_Helper_Abstract
 
         /* @var $collection Mage_Eav_Model_Resource_Entity_Attribute_Collection */
         $collection = Mage::getSingleton('eav/config')
-            ->getEntityType(RK_TypeCMS_Model_Page::ENTITY)->getAttributeCollection();
+            ->getEntityType(RickDev_TypeCMS_Model_Page::ENTITY)->getAttributeCollection();
         $collection->addFieldToFilter('backend_type', array('neq' => 'static'))
             ->addFieldToFilter('attribute_code', array('nin' => $attributes));
 

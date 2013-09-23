@@ -1,6 +1,6 @@
 <?php
 
-/* @var $installer RK_TypeCMS_Model_Resource_Setup */
+/* @var $installer RickDev_TypeCMS_Model_Resource_Setup */
 $installer = $this;
 
 $installer->startSetup();
