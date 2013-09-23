@@ -5,6 +5,7 @@ class RK_TypeCMS_Helper_Data extends Mage_Core_Helper_Abstract
 
     protected $_attributeTypeToDbType = array(
         'text' => 'varchar',
+        'select' => 'varchar',
         'textarea' => 'text',
         'editor' => 'text',
     );

@@ -16,20 +16,23 @@ class RK_TypeCMS_Model_Page_Type_Default extends RK_TypeCMS_Model_Page_Type_Abst
         foreach ($attributes as $code => $attribute) {
             $type = Mage::helper('typecms')->attributeTypeToFieldType($attribute['type']);
             $label = Mage::helper('typecms')->__($attribute['label']);
+
+            $field = $fieldset->addField('typecms_' . $code, $type, array(
+                'name' => 'typecms[' . $code . ']',
+                'label' => $label,
+            ));
+
             if ($type == 'editor') {
                 $wysiwygConfig = Mage::getSingleton('cms/wysiwyg_config')->getConfig(
                     array('tab_id' => 'main')
                 );
-                $fieldset->addField('typecms_' . $code, $type, array(
-                    'name'      => 'typecms[' . $code . ']',
-                    'label'     => $label,
+                $field->addData(array(
                     'style'     => 'height:36em;',
                     'config'    => $wysiwygConfig
                 ));
-            } else {
-                $fieldset->addField('typecms_' . $code, $type, array(
-                    'name' => 'typecms[' . $code . ']',
-                    'label' => $label,
+            } elseif ($type == 'select') {
+                $field->addData(array(
+                    'values' => $attribute['options'],
                 ));
             }
         }
