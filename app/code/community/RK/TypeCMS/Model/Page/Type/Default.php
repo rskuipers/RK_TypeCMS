@@ -3,7 +3,7 @@
 class RK_TypeCMS_Model_Page_Type_Default extends RK_TypeCMS_Model_Page_Type_Abstract
 {
 
-    public function init(Varien_Data_Form $form)
+    public function init(Varien_Data_Form $form, RK_TypeCMS_Model_Page $page)
     {
         $attributes = $this->getAttributes();
 
@@ -17,10 +17,30 @@ class RK_TypeCMS_Model_Page_Type_Default extends RK_TypeCMS_Model_Page_Type_Abst
             $type = Mage::helper('typecms')->attributeTypeToFieldType($attribute['type']);
             $label = Mage::helper('typecms')->__($attribute['label']);
 
-            $field = $fieldset->addField('typecms_' . $code, $type, array(
-                'name' => 'typecms[' . $code . ']',
-                'label' => $label,
-            ));
+            if ($type == 'image' || $type == 'file') {
+                $field = $fieldset->addField('typecms_' . $code, 'file', array(
+                    'name' => 'typecms[' . $code . ']',
+                    'label' => $label,
+                    'after_element_html' => '<script type="text/javascript">setTimeout(function(){$(\'edit_form\').enctype = \'multipart/form-data\';}, 50);</script>',
+                ));
+                if ($page->getData($code)) {
+                    if ($type == 'image') {
+                        $field->setData('after_element_html', '<br />
+                        <img src="' . Mage::helper('typecms')->getBaseImageUrl() . $page->getData($code) . '" width="300" /><br />
+                        <label><input type="checkbox" name="typecms[' . $code . '_delete]" value="1" /> Delete image</label>' . $field->getData('after_element_html'));
+                    } else {
+                        $field->setData('after_element_html', '<br />
+                        ' . Mage::helper('typecms')->escapeHtml($page->getData($code)) . '<br />
+                        <label><input type="checkbox" name="typecms[' . $code . '_delete]" value="1" /> Delete file</label>' . $field->getData('after_element_html'));
+                    }
+                }
+                $form->setData('enctype', 'multipart/form-data');
+            } else {
+                $field = $fieldset->addField('typecms_' . $code, $type, array(
+                    'name' => 'typecms[' . $code . ']',
+                    'label' => $label,
+                ));
+            }
 
             if ($attribute['type'] == 'yesno') {
                 $attribute['options'] = array(
@@ -34,8 +54,8 @@ class RK_TypeCMS_Model_Page_Type_Default extends RK_TypeCMS_Model_Page_Type_Abst
                     array('tab_id' => 'main')
                 );
                 $field->addData(array(
-                    'style'     => 'height:36em;',
-                    'config'    => $wysiwygConfig
+                    'style' => 'height:36em;',
+                    'config' => $wysiwygConfig
                 ));
             } elseif ($type == 'select') {
                 $field->addData(array(

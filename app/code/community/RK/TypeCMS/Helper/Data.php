@@ -3,12 +3,16 @@
 class RK_TypeCMS_Helper_Data extends Mage_Core_Helper_Abstract
 {
 
+    const TYPECMS_PATH = 'typecms';
+
     protected $_attributeTypeToDbType = array(
         'text' => 'varchar',
         'select' => 'varchar',
         'yesno' => 'int',
         'textarea' => 'text',
         'editor' => 'text',
+        'image' => 'varchar',
+        'file' => 'varchar',
     );
 
     public function attributeTypeToDbType($type)
@@ -57,6 +61,16 @@ class RK_TypeCMS_Helper_Data extends Mage_Core_Helper_Abstract
         }
 
         $setup->getConnection()->commit();
+    }
+
+    public function getBaseImageDir()
+    {
+        return Mage::getBaseDir('media') . DS . self::TYPECMS_PATH . DS;
+    }
+
+    public function getBaseImageUrl()
+    {
+        return Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . self::TYPECMS_PATH . '/';
     }
 
 }

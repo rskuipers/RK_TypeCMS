@@ -29,7 +29,7 @@ class RK_TypeCMS_Model_Observer {
         }
         $page->addData($values);
         $pageTypeInstance = $model->getPageTypeInstance();
-        $pageTypeInstance->init($form);
+        $pageTypeInstance->init($form, $model);
     }
 
     public function cmsPageSaveAfter($observer)
@@ -44,9 +44,55 @@ class RK_TypeCMS_Model_Observer {
             $pageType->setId($page->getId());
         }
         $pageType->setPageType($page->getPageType());
-        $attributes = $page->getData('typecms');
-        if (isset($attributes)) $pageType->addData($attributes);
+        $data = $page->getData('typecms');
+        if (isset($data)) $pageType->addData($data);
+
+        $config = Mage::getSingleton('typecms/config');
+        $attributes = $config->getAttributes($pageType->getData('page_type'));
+
+        foreach ($attributes as $attributeCode => $attribute) {
+            if (in_array($attribute['type'], array('image', 'file'))) {
+                if ($pageType->getData($attributeCode . '_delete') == '1') {
+                    self::deleteImage($pageType->getData($attributeCode));
+                    $pageType->setData($attributeCode, null);
+                }
+                $file = $this->handleUpload($attributeCode, $attribute['type']);
+                if ($file && $file !== $pageType->getData($attributeCode)) {
+                    self::deleteImage($pageType->getData($attributeCode));
+                }
+                if ($file) $pageType->setData($attributeCode, $file);
+            }
+        }
+
         $pageType->save();
+    }
+
+    protected static function handleUpload($attributeCode, $type)
+    {
+        if (!isset($_FILES)) return false;
+        $adapter = new Zend_File_Transfer_Adapter_Http();
+        if ($adapter->isUploaded('typecms_' . $attributeCode . '_')) {
+            if (!$adapter->isValid('typecms_' . $attributeCode . '_')) {
+                Mage::throwException(Mage::helper('typecms')->__('Uploaded ' . $type . ' is not valid'));
+            }
+            $upload = new Varien_File_Uploader('typecms[' . $attributeCode . ']');
+            $upload->setAllowCreateFolders(true);
+            if ($type == 'image') {
+                $upload->setAllowedExtensions(array('jpg', 'gif', 'png'));
+            }
+            $upload->setAllowRenameFiles(true);
+            $upload->setFilesDispersion(false);
+            if ($upload->save(Mage::helper('typecms')->getBaseImageDir())) {
+                return $upload->getUploadedFileName();
+            }
+        }
+        return false;
+    }
+
+    protected static function deleteImage($file)
+    {
+        $io = new Varien_Io_File();
+        return $io->rm(Mage::helper('typecms')->getBaseImageDir() . $file);
     }
 
 }
