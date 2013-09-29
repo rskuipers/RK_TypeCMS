@@ -24,15 +24,48 @@ Defining a page type
     <global>
         <page>
             <types>
-                <default>
-                    <label>Default</label>
-                    <model>typecms/page_type_default</model>
-                    <template>typecms/default.phtml</template>
-                    <attributes>
-                        <test>
-                            <label>Test</label>
-                            <type>text</type>
-                        </test>
+                <default> <!-- This is the code of your page type (required) -->
+                    <label>Default</label> <!-- The page type's label (required) -->
+                    <model>typecms/page_type_default</model> <!-- Render the backend fields yourself (optional) -->
+                    <template>typecms/default.phtml</template> <!-- Use this template to render the page (optional) -->
+                    <attributes> <!-- A list of all the attributes for the page type (optional) -->
+                        <name> <!-- Code of the attribute (required) -->
+                            <label>Name</label> <!-- Label of the attribute (required) -->
+                            <type>text</type> <!-- The type of data, this also determines the field to be rendered. (required) -->
+                            <!-- Options: text, editor, int, select, yesno, file, image. -->
+                        </name>
+                        <age>
+                            <label>Age</label>
+                            <type>int</type>
+                        </age>
+                        <gender>
+                            <label>Gender</label>
+                            <type>select</type>
+                            <options> <!-- Options of the select -->
+                                <male>Male</male> <!-- "Male" is the option label, "male" is the option value. -->
+                                <female>Female</female>
+                            </options>
+                        </gender>
+                        <married>
+                            <label>Married</label>
+                            <type>yesno</type>
+                        </married>
+                        <picture>
+                            <label>Picture</label>
+                            <type>image</type>
+                        </picture>
+                        <cv>
+                            <label>CV</label>
+                            <type>file</type>
+                        </cv>
+                        <introduction>
+                            <label>Introduction</label>
+                            <type>editor</type>
+                        </introduction>
+                        <signature>
+                            <label>Signature</label>
+                            <type>textarea</type>
+                        </signature>
                     </attributes>
                 </default>
             </types>
@@ -40,24 +73,7 @@ Defining a page type
     </global>
 ```
 
-The above defines a page type (in this case the default page type) called Default with its own template and attributes. Here's an explanation of all the options:
-
-**default** – This is the code of your page type (required)
-
-**label** – The page type's label (required)
-
-**model** – Render the backend fields yourself (optional)
-
-**template** – Use this template to render the page (optional)
-
-**attributes** – A list of all the attributes for the page type (optional)
-
-**test** – Code of the attribute (required)
-
-**label** – Label of the attribute (required)
-
-**type** – The type of data, this also determines the field to be rendered. (required)
-Options: text, editor, int, select, yesno, file, image.
+The above defines a page type (in this case the default page type) called Default with its own template and attributes.
 
 Changelog
 ---
