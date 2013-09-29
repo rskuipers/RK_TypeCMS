@@ -37,19 +37,40 @@ class RK_TypeCMS_Helper_Data extends Mage_Core_Helper_Abstract
         $setup = Mage::getResourceModel('typecms/setup', 'typecms_setup');
         $pageTypes = $config->getPageTypes();
         $attributes = array();
+
         foreach ($pageTypes as $pageTypeCode => $pageType) {
-            $attributes = $config->getAttributes($pageTypeCode);
-            foreach ($attributes as $attributeCode => $attribute) {
-                $attributeEntity = $setup->getAttribute(RK_TypeCMS_Model_Page::ENTITY, $attributeCode);
+            $_attributes = $config->getAttributes($pageTypeCode);
+            foreach ($_attributes as $attributeCode => $attribute) {
+                if (!isset($attributes[$attributeCode])) $attributes[$attributeCode] = array();
+                $attributes[$attributeCode][] = $attribute;
+            }
+        }
+
+        foreach ($attributes as $attributeCode => $_attributes) {
+            if (count($_attributes) > 1) {
+                $type = $this->attributeTypeToBackendType($_attributes[0]['type']);
+                for ($i = 1; isset($_attributes[$i]); $i++) {
+                    $attribute = $_attributes[$i];
+                    $backendType = $this->attributeTypeToBackendType($attribute['type']);
+                    if ($type !== $backendType) {
+                        Mage::throwException('Conflicting backend types for attribute "' . $attributeCode . '": ' . $type . ' (' . $_attributes[0]['type'] . ') does not equal ' . $backendType . ' (' . $attribute['type'] . ')');
+                    }
+                }
+            } else {
+                $attribute = $_attributes[0];
                 $backendType = $this->attributeTypeToBackendType($attribute['type']);
+                $attributeEntity = $setup->getAttribute(RK_TypeCMS_Model_Page::ENTITY, $attributeCode);
                 if (!$attributeEntity) {
                     $setup->addAttribute(RK_TypeCMS_Model_Page::ENTITY, $attributeCode, array(
                         'type' => $backendType,
                     ));
-                } elseif ($attributeEntity['backend_type'] != $backendType) {
-                    Mage::throwException('Conflicting backend type for attribute "' . $attributeCode . '": ' . $attributeEntity['backend_type'] . ' does not equal ' . $backendType . ' (' . $attribute['type'] . ')');
+                } elseif ($attributeEntity['backend_type'] != $attribute['type']) {
+                    $setup->removeAttribute(RK_TypeCMS_Model_Page::ENTITY, $attributeCode);
+                    $backendType = $this->attributeTypeToBackendType($attribute['type']);
+                    $setup->addAttribute(RK_TypeCMS_Model_Page::ENTITY, $attributeCode, array(
+                        'type' => $backendType,
+                    ));
                 }
-                $attributes[] = $attributeCode;
             }
         }
 
