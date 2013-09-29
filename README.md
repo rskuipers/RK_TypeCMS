@@ -62,5 +62,20 @@ The above defines a page type (in this case the default page type) called Defaul
 
 Changelog
 ---
+Version 2.0.0
++ Added file field
++ Added image field
++ Added yes/no field
++ Added select field
+- Changed field types to represent frontend type instead of backend type
+- [Fixes #2](https://github.com/RickKuipers/TypeCMS/issues/2)
+- [Fixes #1](https://github.com/RickKuipers/TypeCMS/issues/1)
+
+Version 1.0.2 (15-07-2013)
+- Fixed the int and varchar table's value column types.
+
+Version 1.0.1 (15-07-2013)
+- Fixed incorrect directory structure
+
 Version 1.0.0 (01-08-2013)
 - Initial release
