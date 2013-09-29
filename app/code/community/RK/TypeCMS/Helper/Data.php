@@ -5,7 +5,7 @@ class RK_TypeCMS_Helper_Data extends Mage_Core_Helper_Abstract
 
     const TYPECMS_PATH = 'typecms';
 
-    protected $_attributeTypeToDbType = array(
+    protected $_attributeTypeToBackendType = array(
         'text' => 'varchar',
         'select' => 'varchar',
         'yesno' => 'int',
@@ -15,9 +15,9 @@ class RK_TypeCMS_Helper_Data extends Mage_Core_Helper_Abstract
         'file' => 'varchar',
     );
 
-    public function attributeTypeToDbType($type)
+    public function attributeTypeToBackendType($type)
     {
-        return isset($this->_attributeTypeToDbType[$type]) ? $this->_attributeTypeToDbType[$type] : $type;
+        return isset($this->_attributeTypeToBackendType[$type]) ? $this->_attributeTypeToBackendType[$type] : $type;
     }
 
     protected $_attributeTypeToFieldType = array(
@@ -41,10 +41,13 @@ class RK_TypeCMS_Helper_Data extends Mage_Core_Helper_Abstract
             $attributes = $config->getAttributes($pageTypeCode);
             foreach ($attributes as $attributeCode => $attribute) {
                 $attributeEntity = $setup->getAttribute(RK_TypeCMS_Model_Page::ENTITY, $attributeCode);
+                $backendType = $this->attributeTypeToBackendType($attribute['type']);
                 if (!$attributeEntity) {
                     $setup->addAttribute(RK_TypeCMS_Model_Page::ENTITY, $attributeCode, array(
-                        'type' => $this->attributeTypeToDbType($attribute['type']),
+                        'type' => $backendType,
                     ));
+                } elseif ($attributeEntity['backend_type'] != $backendType) {
+                    Mage::throwException('Conflicting backend type for attribute "' . $attributeCode . '": ' . $attributeEntity['backend_type'] . ' does not equal ' . $backendType . ' (' . $attribute['type'] . ')');
                 }
                 $attributes[] = $attributeCode;
             }
