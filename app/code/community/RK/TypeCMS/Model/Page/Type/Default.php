@@ -17,14 +17,14 @@ class RK_TypeCMS_Model_Page_Type_Default extends RK_TypeCMS_Model_Page_Type_Abst
             $type = Mage::helper('typecms')->attributeTypeToFieldType($attribute['type']);
             $label = Mage::helper('typecms')->__($attribute['label']);
 
-            if ($type == 'image' || $type == 'file') {
+            if ($type == 'file') {
                 $field = $fieldset->addField('typecms_' . $code, 'file', array(
                     'name' => 'typecms[' . $code . ']',
                     'label' => $label,
                     'after_element_html' => '<script type="text/javascript">setTimeout(function(){$(\'edit_form\').enctype = \'multipart/form-data\';}, 50);</script>',
                 ));
                 if ($page->getData($code)) {
-                    if ($type == 'image') {
+                    if ($attribute['type'] == 'image') {
                         $field->setData('after_element_html', '<br />
                         <img src="' . Mage::helper('typecms')->getBaseImageUrl() . $page->getData($code) . '" width="300" /><br />
                         <label><input type="checkbox" name="typecms[' . $code . '_delete]" value="1" /> Delete image</label>' . $field->getData('after_element_html'));

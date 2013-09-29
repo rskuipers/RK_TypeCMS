@@ -73,7 +73,7 @@ class RK_TypeCMS_Model_Observer {
         $adapter = new Zend_File_Transfer_Adapter_Http();
         if ($adapter->isUploaded('typecms_' . $attributeCode . '_')) {
             if (!$adapter->isValid('typecms_' . $attributeCode . '_')) {
-                Mage::throwException(Mage::helper('typecms')->__('Uploaded ' . $type . ' is not valid'));
+                Mage::throwException(Mage::helper('typecms')->__('Uploaded ' . $type . ' is invalid'));
             }
             $upload = new Varien_File_Uploader('typecms[' . $attributeCode . ']');
             $upload->setAllowCreateFolders(true);
@@ -82,8 +82,12 @@ class RK_TypeCMS_Model_Observer {
             }
             $upload->setAllowRenameFiles(true);
             $upload->setFilesDispersion(false);
-            if ($upload->save(Mage::helper('typecms')->getBaseImageDir())) {
-                return $upload->getUploadedFileName();
+            try {
+                if ($upload->save(Mage::helper('typecms')->getBaseImageDir())) {
+                    return $upload->getUploadedFileName();
+                }
+            } catch (Exception $e) {
+                Mage::throwException('Uploaded ' . $type . ' is invalid');
             }
         }
         return false;

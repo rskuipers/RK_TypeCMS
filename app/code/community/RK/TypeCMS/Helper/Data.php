@@ -21,8 +21,8 @@ class RK_TypeCMS_Helper_Data extends Mage_Core_Helper_Abstract
     }
 
     protected $_attributeTypeToFieldType = array(
-        'textarea' => 'textarea',
         'int' => 'text',
+        'image' => 'file',
         'yesno' => 'select',
     );
 
