@@ -31,7 +31,7 @@ Defining a page type
                     <attributes>
                         <test>
                             <label>Test</label>
-                            <type>varchar</type>
+                            <type>text</type>
                         </test>
                     </attributes>
                 </default>
@@ -56,9 +56,8 @@ The above defines a page type (in this case the default page type) called Defaul
 
 **label** – Label of the attribute (required)
 
-**type** – The type of data, this also determines the field to be rendered. Options: varchar, int, text. (required)
-
-*NOTE* When using the default model of TypeCMS, your varchar and integer attribute will turn into a text input and your text attribute will turn into a WYSIWYG.
+**type** – The type of data, this also determines the field to be rendered. (required)
+Options: text, editor, int, select, yesno, file, image.
 
 Changelog
 ---
