@@ -11,7 +11,7 @@ class RK_TypeCMS_Model_Config
     {
         if (!isset($this->_pageTypes)) {
             $this->_pageTypes = Mage::getConfig()->getNode(self::XML_PATH_PAGE_TYPES)->asArray();
-            if (isset($this->_pageTypes['label'])) $this->_pageTypes['label'] = $this->__($this->_pageTypes['label']);
+            if (isset($this->_pageTypes['label'])) $this->_pageTypes['label'] = Mage::helper('typecms')->__($this->_pageTypes['label']);
         }
         return $this->_pageTypes;
     }
@@ -23,6 +23,10 @@ class RK_TypeCMS_Model_Config
         return $types[$type];
     }
 
+    /**
+     * @param $pageType
+     * @return array
+     */
     public function getAttributes($pageType)
     {
         $node = Mage::getConfig()->getNode(self::XML_PATH_PAGE_TYPES)->descend($pageType);

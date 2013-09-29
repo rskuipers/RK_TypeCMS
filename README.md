@@ -31,7 +31,7 @@ Defining a page type
                     <attributes>
                         <test>
                             <label>Test</label>
-                            <type>varchar</type>
+                            <type>text</type>
                         </test>
                     </attributes>
                 </default>
@@ -56,11 +56,25 @@ The above defines a page type (in this case the default page type) called Defaul
 
 **label** – Label of the attribute (required)
 
-**type** – The type of data, this also determines the field to be rendered. Options: varchar, int, text. (required)
-
-*NOTE* When using the default model of TypeCMS, your varchar and integer attribute will turn into a text input and your text attribute will turn into a WYSIWYG.
+**type** – The type of data, this also determines the field to be rendered. (required)
+Options: text, editor, int, select, yesno, file, image.
 
 Changelog
 ---
+Version 2.0.0
++ Added file field
++ Added image field
++ Added yes/no field
++ Added select field
+- Changed field types to represent frontend type instead of backend type
+- [Fixes #2](https://github.com/RickKuipers/TypeCMS/issues/2)
+- [Fixes #1](https://github.com/RickKuipers/TypeCMS/issues/1)
+
+Version 1.0.2 (15-07-2013)
+- Fixed the int and varchar table's value column types.
+
+Version 1.0.1 (15-07-2013)
+- Fixed incorrect directory structure
+
 Version 1.0.0 (01-08-2013)
 - Initial release

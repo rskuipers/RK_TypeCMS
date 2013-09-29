@@ -39,6 +39,7 @@ class RK_TypeCMS_Model_Source_Type
     /**
      * Retrieve page layout options array
      *
+     * @param $withEmpty bool Add an empty option
      * @return array
      */
     public function toOptionArray($withEmpty = false)
@@ -48,12 +49,12 @@ class RK_TypeCMS_Model_Source_Type
         foreach ($this->getOptions() as $value => $label) {
             $options[] = array(
                 'label' => $label,
-                'value' => $value
+                'value' => $value,
             );
         }
 
         if ($withEmpty) {
-            array_unshift($options, array('value'=>'', 'label'=>Mage::helper('typecms')->__('-- Please Select --')));
+            array_unshift($options, array('value' => '', 'label' => Mage::helper('typecms')->__('-- Please Select --')));
         }
 
         return $options;
