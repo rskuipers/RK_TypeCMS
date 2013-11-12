@@ -5,6 +5,8 @@ $installer = $this;
 
 $installer->startSetup();
 
+$hasCleverCms = $installer->tableExists('cms_page_tree');
+
 $table = $installer->getConnection()
     ->newTable($installer->getTable('typecms/page'))
     ->addColumn('entity_id', Varien_Db_Ddl_Table::TYPE_INTEGER, null, array(
@@ -16,8 +18,8 @@ $table = $installer->getConnection()
         'nullable'  => false,
     ), 'Page')
     ->addForeignKey(
-        $installer->getFkName('typecms_page_entity', 'entity_id', 'cms/page', 'page_id'),
-        'entity_id', $installer->getTable('cms/page'), 'page_id',
+        $installer->getFkName('typecms_page_entity', 'entity_id', $hasCleverCms ? 'cms_page_tree' : 'cms/page', 'page_id'),
+        'entity_id', $hasCleverCms ? 'cms_page_tree' : $installer->getTable('cms/page'), 'page_id',
         Varien_Db_Ddl_Table::ACTION_CASCADE, Varien_Db_Ddl_Table::ACTION_CASCADE)
     ->setComment('TypeCMS Page Table');
 $installer->getConnection()->createTable($table);
