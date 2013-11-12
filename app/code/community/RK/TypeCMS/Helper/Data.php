@@ -78,7 +78,7 @@ class RK_TypeCMS_Helper_Data extends Mage_Core_Helper_Abstract
         $collection = Mage::getSingleton('eav/config')
             ->getEntityType(RK_TypeCMS_Model_Page::ENTITY)->getAttributeCollection();
         $collection->addFieldToFilter('backend_type', array('neq' => 'static'))
-            ->addFieldToFilter('attribute_code', array('nin' => $attributes));
+            ->addFieldToFilter('attribute_code', array('nin' => array_keys($attributes)));
 
         foreach ($collection as $attribute) {
             $attribute->delete();
