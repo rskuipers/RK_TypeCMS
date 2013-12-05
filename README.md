@@ -77,7 +77,17 @@ The above defines a page type (in this case the default page type) called Defaul
 
 Changelog
 ---
-Version 2.0.0
+Version 2.0.3 (05-12-2013)
+- Fix compatiblity issue with Clever CMS
+
+Version 2.0.2 (28-11-2013)
++ Add template processor to default template (to parse widgets and such)
+
+Version 2.0.1 (12-11-2013)
+- Fix bug where attributes were deleted upon insertion
+- Fix compatibility issue with Clever CMS
+
+Version 2.0.0 (29-09-2013)
 + Added file field
 + Added image field
 + Added yes/no field
