@@ -58,17 +58,7 @@
                     </typecms>
                 </observers>
             </adminhtml_cms_page_edit_tab_main_prepare_form>
-            <!--<cms_page_save_after>-->
-            <!--<observers>-->
-            <!--<typecms>-->
-            <!--<type>singleton</type>-->
-            <!--<class>typecms/observer</class>-->
-            <!--<method>cmsPageSave</method>-->
-            <!--</typecms>-->
-            <!--</observers>-->
-            <!--</cms_page_save_after>-->
-            <!-- We use save_before purely because Clever CMS takes out the save_after event... don't ask me why. -->
-            <cms_page_save_before>
+            <cms_page_save_after>
                 <observers>
                     <typecms>
                         <type>singleton</type>
@@ -76,7 +66,7 @@
                         <method>cmsPageSaveAfter</method>
                     </typecms>
                 </observers>
-            </cms_page_save_before>
+            </cms_page_save_after>
         </events>
         <resources>
             <typecms_setup>
