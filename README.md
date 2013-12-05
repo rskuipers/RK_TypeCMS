@@ -96,11 +96,11 @@ Version 2.0.0 (29-09-2013)
 - [Fixes #2](https://github.com/RickKuipers/TypeCMS/issues/2)
 - [Fixes #1](https://github.com/RickKuipers/TypeCMS/issues/1)
 
-Version 1.0.2 (15-07-2013)
+Version 1.0.2 (15-09-2013)
 - Fixed the int and varchar table's value column types.
 
-Version 1.0.1 (15-07-2013)
+Version 1.0.1 (15-09-2013)
 - Fixed incorrect directory structure
 
-Version 1.0.0 (01-08-2013)
+Version 1.0.0 (01-09-2013)
 - Initial release
