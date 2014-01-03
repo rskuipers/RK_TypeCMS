@@ -77,6 +77,9 @@ The above defines a page type (in this case the default page type) called Defaul
 
 Changelog
 ---
+Version 2.0.4 (03-01-2014)
+- Fix issue with template not showing
+
 Version 2.0.3 (05-12-2013)
 - Fix compatiblity issue with Clever CMS
 
