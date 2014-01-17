@@ -24,9 +24,10 @@ Defining a page type
     <global>
         <page>
             <types>
-                <default> <!-- This is the code of your page type (required) -->
-                    <label>Default</label> <!-- The page type's label (required) -->
+                <test> <!-- This is the code of your page type (required) -->
+                    <label>Test</label> <!-- The page type's label (required) -->
                     <model>typecms/page_type_default</model> <!-- Render the backend fields yourself (optional) -->
+                    <block>typecms/page_type_default</block> <!-- Define the block used to display the page -->
                     <template>typecms/default.phtml</template> <!-- Use this template to render the page (optional) -->
                     <attributes> <!-- A list of all the attributes for the page type (optional) -->
                         <name> <!-- Code of the attribute (required) -->
@@ -67,7 +68,7 @@ Defining a page type
                             <type>textarea</type>
                         </signature>
                     </attributes>
-                </default>
+                </test>
             </types>
         </page>
     </global>
@@ -77,6 +78,15 @@ The above defines a page type (in this case the default page type) called Defaul
 
 Changelog
 ---
+Version 2.1.0 (17-01-2014)
++ Add Collection page type, allows you to easily read out a page's children and display their information (currently CleverCMS only)
++ Add docblocks to everything
++ Add block types and option to define a block type for a page type
++ Add modman support
+- Fix issue with attributes being reinstalled during setupAttributes()
+- Fix issue when database prefixes are used
+- Minor bug fixes
+
 Version 2.0.4 (03-01-2014)
 - Fix issue with template not showing
 

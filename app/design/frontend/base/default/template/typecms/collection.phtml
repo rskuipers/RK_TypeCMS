@@ -1,0 +1,12 @@
+<?php
+/**
+ * @var RK_TypeCMS_Block_Page_Type_Collection $this
+ */
+?>
+<?php $children = $this->getChildren(); ?>
+<?php if (count($children)) : ?>
+    <?php foreach ($children as $child) : ?>
+        <h2><?=$child->getTitle()?></h2>
+        <p><?=$child->getContent()?></p>
+    <?php endforeach ?>
+<?php endif ?>

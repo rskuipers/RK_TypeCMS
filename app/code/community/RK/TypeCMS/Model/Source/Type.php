@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class RK_TypeCMS_Model_Source_Type
+ */
 class RK_TypeCMS_Model_Source_Type
 {
 

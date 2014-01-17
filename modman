@@ -1,0 +1,4 @@
+app/code/community/RK/TypeCMS/				                    app/code/community/RK/TypeCMS/
+app/etc/modules/RK_TypeCMS.xml				                    app/etc/modules/RK_TypeCMS.xml
+app/design/frontend/base/default/layout/typecms.xml	            app/design/frontend/base/default/layout/typecms.xml
+app/design/frontend/base/default/template/typecms		        app/design/frontend/base/default/template/typecms

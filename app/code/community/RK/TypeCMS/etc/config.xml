@@ -2,7 +2,7 @@
 <config>
     <modules>
         <RK_TypeCMS>
-            <version>2.0.4</version>
+            <version>2.1.0</version>
         </RK_TypeCMS>
     </modules>
     <global>
@@ -11,8 +11,15 @@
                 <default>
                     <label>Default</label>
                     <model>typecms/page_type_default</model>
+                    <block>typecms/page_type_default</block>
                     <template>typecms/default.phtml</template>
                 </default>
+                <collection>
+                    <label>Collection</label>
+                    <model>typecms/page_type_default</model>
+                    <block>typecms/page_type_collection</block>
+                    <template>typecms/collection.phtml</template>
+                </collection>
             </types>
         </page>
         <blocks>
@@ -96,5 +103,4 @@
             </updates>
         </layout>
     </frontend>
-
 </config>

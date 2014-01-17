@@ -1,8 +1,15 @@
 <?php
 
+/**
+ * Class RK_TypeCMS_Model_Page_Type_Default
+ */
 class RK_TypeCMS_Model_Page_Type_Default extends RK_TypeCMS_Model_Page_Type_Abstract
 {
 
+    /**
+     * @param Varien_Data_Form $form
+     * @param RK_TypeCMS_Model_Page $page
+     */
     public function init(Varien_Data_Form $form, RK_TypeCMS_Model_Page $page)
     {
         $attributes = $this->getAttributes();
@@ -64,5 +71,4 @@ class RK_TypeCMS_Model_Page_Type_Default extends RK_TypeCMS_Model_Page_Type_Abst
             }
         }
     }
-
 }

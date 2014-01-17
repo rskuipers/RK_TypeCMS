@@ -1,7 +1,13 @@
 <?php
 
+/**
+ * Class RK_TypeCMS_Model_Observer
+ */
 class RK_TypeCMS_Model_Observer {
 
+    /**
+     * @param Varien_Event_Observer $observer
+     */
     public function adminhtmlCmsPageEditTabMainPrepareForm($observer)
     {
         /* @var $page Mage_Cms_Model_Page */
@@ -32,6 +38,9 @@ class RK_TypeCMS_Model_Observer {
         $pageTypeInstance->init($form, $model);
     }
 
+    /**
+     * @param Varien_Event_Observer $observer
+     */
     public function cmsPageSaveAfter($observer)
     {
         /* @var $page Mage_Cms_Model_Page */
@@ -67,6 +76,11 @@ class RK_TypeCMS_Model_Observer {
         $pageType->save();
     }
 
+    /**
+     * @param string $attributeCode
+     * @param string $type
+     * @return bool
+     */
     protected static function handleUpload($attributeCode, $type)
     {
         if (!isset($_FILES)) return false;
@@ -93,6 +107,10 @@ class RK_TypeCMS_Model_Observer {
         return false;
     }
 
+    /**
+     * @param string $file
+     * @return bool
+     */
     protected static function deleteImage($file)
     {
         $io = new Varien_Io_File();

@@ -1,12 +1,24 @@
 <?php
 
+/**
+ * Class RK_TypeCMS_Model_Config
+ */
 class RK_TypeCMS_Model_Config
 {
 
+    /**
+     * Config path to the defined page types
+     */
     const XML_PATH_PAGE_TYPES = 'global/page/types';
 
+    /**
+     * @var array
+     */
     protected $_pageTypes;
 
+    /**
+     * @return array
+     */
     public function getPageTypes()
     {
         if (!isset($this->_pageTypes)) {
@@ -16,6 +28,10 @@ class RK_TypeCMS_Model_Config
         return $this->_pageTypes;
     }
 
+    /**
+     * @param string $type
+     * @return array
+     */
     public function getPageType($type)
     {
         $types = $this->getPageTypes();
@@ -24,7 +40,7 @@ class RK_TypeCMS_Model_Config
     }
 
     /**
-     * @param $pageType
+     * @param string $pageType
      * @return array
      */
     public function getAttributes($pageType)
@@ -36,5 +52,4 @@ class RK_TypeCMS_Model_Config
         }
         return array();
     }
-
 }

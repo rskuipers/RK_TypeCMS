@@ -3,9 +3,11 @@
 /* @var $installer RK_TypeCMS_Model_Resource_Setup */
 $installer = $this;
 
+$coreResource = Mage::getSingleton("core/resource");
+
 $installer->startSetup();
 
-$hasCleverCms = $installer->tableExists('cms_page_tree');
+$hasCleverCms = $installer->tableExists($coreResource->getTableName('cms_page_tree'));
 
 $table = $installer->getConnection()
     ->newTable($installer->getTable('typecms/page'))
@@ -19,7 +21,7 @@ $table = $installer->getConnection()
     ), 'Page')
     ->addForeignKey(
         $installer->getFkName('typecms_page_entity', 'entity_id', $hasCleverCms ? 'cms_page_tree' : 'cms/page', 'page_id'),
-        'entity_id', $hasCleverCms ? 'cms_page_tree' : $installer->getTable('cms/page'), 'page_id',
+        'entity_id', $hasCleverCms ? $coreResource->getTableName('cms_page_tree') : $installer->getTable('cms/page'), 'page_id',
         Varien_Db_Ddl_Table::ACTION_CASCADE, Varien_Db_Ddl_Table::ACTION_CASCADE)
     ->setComment('TypeCMS Page Table');
 $installer->getConnection()->createTable($table);
