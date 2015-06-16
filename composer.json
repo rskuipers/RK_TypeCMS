@@ -1,0 +1,8 @@
+{
+    "name": "rk/typecms",
+    "type": "magento-module",
+    "homepage": "https://github.com/rskuipers/RK_TypeCMS",
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}
