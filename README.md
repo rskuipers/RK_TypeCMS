@@ -78,6 +78,9 @@ The above defines a page type (in this case the default page type) called Defaul
 
 Changelog
 ---
+Version 3.0.0 (12-08-2015)
++ [BC break] Introduce support for Bubble CMS (previously Clever CMS) (thank you @adamj88)
+
 Version 2.1.0 (17-01-2014)
 + Add Collection page type, allows you to easily read out a page's children and display their information (currently CleverCMS only)
 + Add docblocks to everything
