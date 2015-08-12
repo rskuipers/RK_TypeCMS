@@ -134,6 +134,6 @@ class RK_TypeCMS_Helper_Data extends Mage_Core_Helper_Abstract
     public function hasCleverCMS()
     {
         $setup = Mage::getResourceModel('typecms/setup', 'typecms_setup');
-        return $setup->tableExists(Mage::getSingleton("core/resource")->getTableName('cms_page_tree'));
+        return $setup->tableExists(Mage::getSingleton("core/resource")->getTableName('bubble_cms_page_tree'));
     }
 }
