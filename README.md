@@ -29,6 +29,7 @@ Defining a page type
                     <model>typecms/page_type_default</model> <!-- Render the backend fields yourself (optional) -->
                     <block>typecms/page_type_default</block> <!-- Define the block used to display the page -->
                     <template>typecms/default.phtml</template> <!-- Use this template to render the page (optional) -->
+                    <handle>typecms_default</handle> <!-- Add a layout handle to the page (optional) -->
                     <attributes> <!-- A list of all the attributes for the page type (optional) -->
                         <name> <!-- Code of the attribute (required) -->
                             <label>Name</label> <!-- Label of the attribute (required) -->
