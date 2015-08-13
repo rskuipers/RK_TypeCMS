@@ -14,11 +14,7 @@ class RK_TypeCMS_Block_Page extends Mage_Cms_Block_Page
         /* @var RK_TypeCMS_Model_Page $page */
         $page = Mage::getModel('typecms/page')->load($this->getPage()->getId());
         if ($page->getId()) {
-            $pageInstance = $page->getPageTypeInstance();
-            $blockType = $pageInstance->getBlock();
-            if ($handle = $pageInstance->getHandle()) {
-                $this->getLayout()->getUpdate()->addHandle($handle);
-            }
+            $blockType = $page->getPageTypeInstance()->getBlock();
             $block = $this->getLayout()->createBlock($blockType, 'typecms_block');
             $block->setTemplate($page->getPageTypeInstance()->getTemplate());
             $block->addData($page->getFilteredData());

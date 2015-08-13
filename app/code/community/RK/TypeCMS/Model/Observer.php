@@ -117,4 +117,17 @@ class RK_TypeCMS_Model_Observer {
         return $io->rm(Mage::helper('typecms')->getBaseImageDir() . $file);
     }
 
+    /**
+     * @param  Varien_Event_Observer
+     */
+    public function onCmsRenderPage(Varien_Event_Observer $observer)
+    {
+        $event = $observer->getEvent();
+        $page = $event->getPage();
+        if($handle = Mage::getModel('typecms/page')->load($page->getId())->getPageTypeInstance()->getHandle()) {
+            $action = $event->getControllerAction();
+            $action->getLayout()->getUpdate()->addHandle($handle);
+        }
+    }
+
 }
