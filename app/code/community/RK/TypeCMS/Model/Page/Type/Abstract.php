@@ -18,6 +18,17 @@ abstract class RK_TypeCMS_Model_Page_Type_Abstract extends Varien_Object
     abstract function init(Varien_Data_Form $form, RK_TypeCMS_Model_Page $page);
 
     /**
+     * @return string
+     */
+    protected function getHandle()
+    {
+        if (!isset($this->_handle)) {
+            $this->_handle = Mage::getSingleton('typecms/config')->getHandle($this->getPageType());
+        }
+        return $this->_handle;
+    }
+
+    /**
      * @return array
      */
     protected function getAttributes()

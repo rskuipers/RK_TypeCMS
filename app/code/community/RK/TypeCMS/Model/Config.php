@@ -41,6 +41,20 @@ class RK_TypeCMS_Model_Config
 
     /**
      * @param string $pageType
+     * @return string
+     */
+    public function getHandle($pageType)
+    {
+        $node = Mage::getConfig()->getNode(self::XML_PATH_PAGE_TYPES)->descend($pageType);
+
+        if ($node && $node = $node->descend('handle')) {
+            return $node->asString();
+        }
+        return false;
+    }
+
+    /**
+     * @param string $pageType
      * @return array
      */
     public function getAttributes($pageType)
