@@ -124,7 +124,7 @@ class RK_TypeCMS_Model_Observer {
     {
         $event = $observer->getEvent();
         $page = $event->getPage();
-        if($handle = Mage::getModel('typecms/page')->load($page->getId())->getPageTypeInstance()->getHandle()) {
+        if ($handle = Mage::getModel('typecms/page')->load($page->getId())->getPageTypeInstance()->getHandle()) {
             $action = $event->getControllerAction();
             $action->getLayout()->getUpdate()->addHandle($handle);
         }
