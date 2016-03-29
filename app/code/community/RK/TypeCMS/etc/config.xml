@@ -13,12 +13,14 @@
                     <model>typecms/page_type_default</model>
                     <block>typecms/page_type_default</block>
                     <template>typecms/default.phtml</template>
+                    <handle>typecms_default</handle>
                 </default>
                 <collection>
                     <label>Collection</label>
                     <model>typecms/page_type_default</model>
                     <block>typecms/page_type_collection</block>
                     <template>typecms/collection.phtml</template>
+                    <handle>typecms_collection</handle>
                 </collection>
             </types>
         </page>
@@ -102,5 +104,16 @@
                 </typecms>
             </updates>
         </layout>
+        <events>
+            <cms_page_render>
+                <observers>
+                    <rk_typecms_cms_page_render>
+                        <type>singleton</type>
+                        <class>typecms/observer</class>
+                        <method>onCmsRenderPage</method>
+                    </rk_typecms_cms_page_render>
+                </observers>
+            </cms_page_render>
+        </events>
     </frontend>
 </config>
