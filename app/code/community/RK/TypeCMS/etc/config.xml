@@ -13,12 +13,14 @@
                     <model>typecms/page_type_default</model>
                     <block>typecms/page_type_default</block>
                     <template>typecms/default.phtml</template>
+                    <handle>typecms_default</handle>
                 </default>
                 <collection>
                     <label>Collection</label>
                     <model>typecms/page_type_default</model>
                     <block>typecms/page_type_collection</block>
                     <template>typecms/collection.phtml</template>
+                    <handle>typecms_collection</handle>
                 </collection>
             </types>
         </page>
