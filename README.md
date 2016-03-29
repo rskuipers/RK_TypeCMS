@@ -79,6 +79,9 @@ The above defines a page type (in this case the default page type) called Defaul
 
 Changelog
 ---
+Version 3.1.0 (29-03-2016)
++ [#11](https://github.com/rskuipers/RK_TypeCMS/issues/11) Add custom handles (thank you [@adamj88](https://github.com/adamj88))
+
 Version 3.0.0 (12-08-2015)
 + [BC break] Introduce support for Bubble CMS (previously Clever CMS) (thank you [@adamj88](https://github.com/adamj88))
 
